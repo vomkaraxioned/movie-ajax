@@ -267,15 +267,18 @@ input[type=text] {
 input[type=submit] {
     width: 100%;
     padding: 10px 5%;
+    background-color: #1b90ff;
+    color: #fff;
+    text-indent: -9999px;
 }
 
 .search-btn::before {
-    width: 100%;
-    height: 100%;
+    width: 20%;
+    margin: 10px auto;
     display: flex;
     position: absolute;
-    color: #fff;
-    background-color: #1b90ff;
+    left: 0;
+    right: 0;
     font-family: 'FontAwesome';
     font-weight: 900;
     content: '\f002';
