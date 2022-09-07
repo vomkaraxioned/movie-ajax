@@ -77,7 +77,7 @@ function showData(e) {
         actor = data[x].actorName;
         producer = data[x].producerName;
         if (key == name.toLowerCase() || key == release.toLowerCase() || key == actor.toLowerCase() || key == producer.toLowerCase()) {
-            list.innerHTML += "<li class=\"movie\"><h2>" + name + "<h2><p class=\"movie-release\">" + release + "</p><p class =\"movie-info\">starring:" + actor + "\n produced by:" + producer + "<p></li>";
+            list.innerHTML += "<li class=\"movie\"><h2>" + name + "</h2><p class=\"movie-release\">" + release + "</p><p class =\"movie-info\">starring:" + actor + "<span>produced by:" + producer + "</span></p></li>";
         }
     }
     e.preventDefault();

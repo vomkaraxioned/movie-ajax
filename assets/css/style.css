@@ -223,6 +223,16 @@ li {
   Header styling starts here
 =================================*/
 
+
+/*=================================
+  Header styling ends here
+=================================*/
+
+
+/*=================================
+  main styling starts here
+=================================*/
+
 .search,
 .data {
     display: flex;
@@ -310,15 +320,42 @@ input {
     display: none;
 }
 
+.movie {
+    width: 80%;
+    padding: 20px 5%;
+    margin-bottom: 20px;
+    background-color: #1b90ff
+}
 
-/*=================================
-  Header styling ends here
-=================================*/
+.movie h2 {
+    width: 40%;
+    border-bottom: 1px solid #000;
+    margin: 0 auto;
+    color: #fff;
+    font-weight: 900;
+    font-size: 21px;
+    text-transform: uppercase;
+    text-align: center;
+}
 
+.movie-release {
+    padding: 10px 0;
+    color: #fff;
+    font-weight: 900;
+    font-size: 16px;
+}
 
-/*=================================
-  main styling starts here
-=================================*/
+.movie-info {
+    color: #fff;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+.movie-info span {
+    margin-left: 5%;
+    display: inline-block;
+    text-transform: capitalize;
+}
 
 
 /*=================================
@@ -339,6 +376,11 @@ input {
 /*media query starts*/
 
 
-/*media query for 995px starts here*/
+/*media query for 425px starts here*/
 
-@media only screen and (max-width: 995px) {}
+@media only screen and (max-width: 425px) {
+    .movie-info span {
+        padding: 10px 0;
+        margin-left: 0;
+    }
+}
