@@ -79,10 +79,15 @@ function showData(e) {
         release = data[x].releaseDate;
         actor = data[x].actorName;
         producer = data[x].producerName;
+        actorPattern = "/" + actor.toLowerCase() + "\1/";
         if (key == name.toLowerCase() || key == release.toLowerCase() || key == actor.toLowerCase() || key == producer.toLowerCase()) {
             available = 1;
             list.innerHTML += "<li class=\"movie\"><h2>" + name + "</h2><p class=\"movie-release\">" + release + "</p><p class =\"movie-info\">starring:" + actor + "<span>produced by:" + producer + "</span></p></li>";
+        } else if (actorPattern.match(key)) {
+            available = 1;
+            list.innerHTML += "<li class=\"movie\"><h2>" + name + "</h2><p class=\"movie-release\">" + release + "</p><p class =\"movie-info\">starring:" + actor + "<span>produced by:" + producer + "</span></p></li>";
         }
+        // console.log(actorPattern.test(key));
     }
     if (available == 0) {
         list.innerHTML += "<li><h2 class=\"invalid \">Sorry no result found</h2></li>";
