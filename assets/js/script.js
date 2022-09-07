@@ -61,14 +61,17 @@ let movie = {
 };
 
 const search = document.querySelector("form");
-
+const inputField = document.querySelector("input[name=search-key]");
+const suggestionBox = document.querySelector(".suggestion");
+let userInput, list, data, key, name, release, actor, producer, available, i, userInputLength, match, push;
+let suggestData = [];
+data = movie.data;
+inputField.addEventListener('keyup', suggest);
 search.addEventListener('submit', showData);
 
 function showData(e) {
-    let userInput = document.forms[0]["search-key"].value;
-    let list = document.querySelector(".data");
-    let data = movie.data;
-    let key, name, release, actor, producer, available;
+    list = document.querySelector(".data");
+    userInput = document.forms[0]["search-key"].value;
     list.innerHTML = "";
     available = 0;
     key = userInput.toLowerCase();
@@ -86,4 +89,49 @@ function showData(e) {
         list.innerHTML += "<li><h2 class=\"invalid \">Sorry no result found</h2></li>";
     }
     e.preventDefault();
+}
+
+function suggest() {
+    userInput = document.forms[0]["search-key"].value;
+    userInputLength = userInput.length;
+    userInput = userInput.toLowerCase();
+    match = false;
+    push = false;
+    if (userInput != "") {
+        for (x in data) {
+            name = data[x].name;
+            actor
+            for (i = 0; i < userInputLength; i++) {
+                if (userInput[i] == name[i].toLowerCase()) {
+                    match = true;
+                } else {
+                    match = false;
+                    break;
+                }
+            }
+            if (match == true) {
+                if (suggestData.length != 0) {
+                    for (x in suggestData) {
+                        if (suggestData[x] != name) {
+                            push = true;
+                        } else {
+                            push = false;
+                        }
+                    }
+                } else {
+                    push = true;
+                }
+                if (push) {
+                    suggestData.push(name);
+                }
+            }
+        }
+        for (x in suggestData) {
+            suggestionBox.innerHTML += "<li class\"suggest\">" + suggestData[x] + "</li>";
+        }
+    } else {
+        suggestionBox.innerHTML = "";
+    }
+    suggestData = [];
+
 }
