@@ -266,7 +266,6 @@ form {
 .search-btn {
     flex: 1;
     display: flex;
-    position: relative;
 }
 
 input[type=text] {
@@ -279,16 +278,14 @@ input[type=submit] {
     padding: 10px 5%;
     background-color: #1b90ff;
     color: #fff;
-    text-indent: -9999px;
+    text-transform: capitalize;
 }
 
 .search-btn::before {
-    width: 20%;
     margin: 10px auto;
     display: flex;
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 1%;
     font-family: 'FontAwesome';
     font-weight: 900;
     content: '\f002';
@@ -308,12 +305,35 @@ input {
 
 .suggestion {
     width: 100%;
+    margin: 35px 0;
     display: flex;
     position: absolute;
-    bottom: -20px;
     flex-direction: column;
-    background-color: #1b90ff;
-    z-index: -1;
+    background-color: #cdcdcd;
+}
+
+.suggest {
+    padding: 10px 5%;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.suggest:hover {
+    color: #1b90ff;
+}
+
+.suggest:hover::before {
+    content: '\f060';
+}
+
+.suggest::before {
+    margin-right: 5%;
+    font-family: 'FontAwesome';
+    font-weight: 900;
+    content: '\f061';
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .dummy {
@@ -354,6 +374,12 @@ input {
 .movie-info span {
     margin-left: 5%;
     display: inline-block;
+    text-transform: capitalize;
+}
+
+.invalid {
+    color: #000;
+    font-size: 21px;
     text-transform: capitalize;
 }
 
