@@ -127,13 +127,13 @@ function suggest() {
         }
     } else {
         suggestionBox.innerHTML = "";
-        suggestData = [];
     }
     suggestionBox.innerHTML = "";
     for (x in suggestData) {
         suggestionBox.innerHTML += "<li class=\"suggest\">" + suggestData[x] + "</li>";
     }
     selectSuggestion();
+    suggestData = [];
 }
 
 function selectSuggestion() {
