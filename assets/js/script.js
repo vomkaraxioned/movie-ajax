@@ -52,7 +52,7 @@ let movie = {
             producerName: "angie pillai"
         }, {
             name: "ninja technique",
-            releaseDate: "05/011/2022",
+            releaseDate: "05/11/2022",
             actorName: "hatoori",
             producerName: "akie takie"
         }
@@ -63,15 +63,14 @@ let movie = {
 const search = document.querySelector("form");
 const inputField = document.querySelector("input[name=search-key]");
 const suggestionBox = document.querySelector(".suggestion");
-let userInput, list, data, key, name, release, actor, producer, available, i, userInputLength, match, push;
+let userInput, list, data, key, name, release, actor, producer, available, i, userInputLength, match, push, suggestList;
 let suggestData = [];
 data = movie.data;
+list = document.querySelector(".data");
 inputField.addEventListener('keyup', suggest);
 search.addEventListener('submit', showData);
 
 function showData(e) {
-    list = document.querySelector(".data");
-    userInput = document.forms[0]["search-key"].value;
     list.innerHTML = "";
     available = 0;
     key = userInput.toLowerCase();
@@ -100,7 +99,6 @@ function suggest() {
     if (userInput != "") {
         for (x in data) {
             name = data[x].name;
-            actor
             for (i = 0; i < userInputLength; i++) {
                 if (userInput[i] == name[i].toLowerCase()) {
                     match = true;
@@ -110,12 +108,13 @@ function suggest() {
                 }
             }
             if (match == true) {
-                if (suggestData.length != 0) {
+                if (suggestData.length > 0) {
                     for (x in suggestData) {
                         if (suggestData[x] != name) {
                             push = true;
                         } else {
                             push = false;
+                            break;
                         }
                     }
                 } else {
@@ -126,12 +125,24 @@ function suggest() {
                 }
             }
         }
-        for (x in suggestData) {
-            suggestionBox.innerHTML += "<li class\"suggest\">" + suggestData[x] + "</li>";
-        }
     } else {
         suggestionBox.innerHTML = "";
+        suggestData = [];
     }
-    suggestData = [];
+    suggestionBox.innerHTML = "";
+    for (x in suggestData) {
+        suggestionBox.innerHTML += "<li class=\"suggest\">" + suggestData[x] + "</li>";
+    }
+    selectSuggestion();
+}
 
+function selectSuggestion() {
+    suggestList = document.querySelectorAll(".suggest");
+    suggestList.forEach((li) => {
+        li.addEventListener('click', () => {
+            inputField.value = li.innerHTML;
+            userInput = inputField.value;
+            suggestionBox.innerHTML = "";
+        })
+    });
 }
