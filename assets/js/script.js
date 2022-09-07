@@ -68,8 +68,9 @@ function showData(e) {
     let userInput = document.forms[0]["search-key"].value;
     let list = document.querySelector(".data");
     let data = movie.data;
-    let key, name, release, actor, producer;
+    let key, name, release, actor, producer, available;
     list.innerHTML = "";
+    available = 0;
     key = userInput.toLowerCase();
     for (x in data) {
         name = data[x].name;
@@ -77,8 +78,12 @@ function showData(e) {
         actor = data[x].actorName;
         producer = data[x].producerName;
         if (key == name.toLowerCase() || key == release.toLowerCase() || key == actor.toLowerCase() || key == producer.toLowerCase()) {
+            available = 1;
             list.innerHTML += "<li class=\"movie\"><h2>" + name + "</h2><p class=\"movie-release\">" + release + "</p><p class =\"movie-info\">starring:" + actor + "<span>produced by:" + producer + "</span></p></li>";
         }
+    }
+    if (available == 0) {
+        list.innerHTML += "<li><h2 class=\"invalid \">Sorry no result found</h2></li>";
     }
     e.preventDefault();
 }

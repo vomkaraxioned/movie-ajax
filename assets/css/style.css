@@ -357,6 +357,12 @@ input {
     text-transform: capitalize;
 }
 
+.invalid {
+    color: #000;
+    font-size: 21px;
+    text-transform: capitalize;
+}
+
 
 /*=================================
   main styling ends here
