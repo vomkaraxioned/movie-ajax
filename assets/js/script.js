@@ -64,13 +64,21 @@ const search = document.querySelector("form");
 
 search.addEventListener('submit', showData);
 
-function showData() {
-    let key = document.forms[0]["search-key"].value;
+function showData(e) {
+    let userInput = document.forms[0]["search-key"].value;
     let list = document.querySelector(".data");
     let data = movie.data;
+    let key, name, release, actor, producer;
+    list.innerHTML = "";
+    key = userInput.toLowerCase();
     for (x in data) {
-        if (key == data[x].name || key == data[x].releaseDate || key == data[x].actorName || key == data[x].producerName) {
-            list.innerHTML += "<li class=\"movie\"><h2>" + data[x].name + "<h2><p class=\"movie-info\">" + data[x].releaseDate + "</p></li>";
+        name = data[x].name;
+        release = data[x].releaseDate;
+        actor = data[x].actorName;
+        producer = data[x].producerName;
+        if (key == name.toLowerCase() || key == release.toLowerCase() || key == actor.toLowerCase() || key == producer.toLowerCase()) {
+            list.innerHTML += "<li class=\"movie\"><h2>" + name + "<h2><p class=\"movie-release\">" + release + "</p><p class =\"movie-info\">starring:" + actor + "\n produced by:" + producer + "<p></li>";
         }
     }
+    e.preventDefault();
 }
